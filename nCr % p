@@ -1,0 +1,22 @@
+public class Main
+{
+     public static void main(String[] args)
+	 {
+        int n=5;
+        int r=2;
+        int p=13;
+        int f1=factor(n);
+        int f2=factor(r);
+        int f3=factor(n-r);
+        System.out.println(((int)f1/(f3*f2))%p);
+     }
+     private static int factor(int n)
+     {
+        if(n==1)
+        {
+          return 1;
+        }
+        return n*factor(n-1);
+     }
+}
+
