@@ -1,0 +1,56 @@
+import java.util.*;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+        int[] array = primex(n);
+        List<Integer> a = new ArrayList<>();
+        a.add(array[0]);
+        a.add(array[1]);
+        System.out.println(a);
+    }
+
+    public static int[] primex(int n)
+    {
+        int[] res = new int[2];
+        int[] a2 = new int[n+1];
+        a2[0]=0;
+        a2[1]=0;
+        for(int i=2;i<=n;i++)
+        {
+            int f=0;
+            for(int j=2;j<=i/2;j++)
+            {
+                if(i%j==0){
+                    f=1;
+                    break;
+                }
+            }
+            if(f==0)
+                a2[i]=1;
+        }
+        List<Integer> ans = new ArrayList<>();
+        for(int i=2;i<=n;i++)
+        {
+            if(a2[i]==1){
+                ans.add(i);
+            }
+        }
+        for(int k : ans)
+        {
+            for(int m : ans)
+            {
+                if(k+m==n)
+                {
+                    res[0]=k;
+                    res[1]=m;
+                    return res;
+                }
+            }
+        }
+        return res;
+
+    }
+
+}
