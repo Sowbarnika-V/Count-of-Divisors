@@ -1,0 +1,50 @@
+import java.util.*;
+public class Main
+{
+	public static void main(String[] args) {
+		Scanner sc=new Scanner(System.in);
+		int n,c=0;
+		n=sc.nextInt();
+		int arr[]=new int[n];
+		int ls[]=new int[n];
+		int rs[]=new int[n];
+		ls[0]=0;
+		rs[n-1]=0;
+		for(int i=0;i<n;i++){
+		    arr[i]=sc.nextInt();
+		}
+		for(int i=1;i<n;i++){
+		    ls[i]=ls[i-1]+arr[i-1];
+		    
+		}
+		for(int i=n-2;i>=0;i--){
+		    rs[i]=rs[i+1]+arr[i+1];
+		}
+		int array[]=new int[n];
+		int ls1[]=new int[n];
+		int rs1[]=new int[n];
+		for(int i=0;i<n;i++){
+		    array[i]=ls[i]+rs[i];
+		}
+		for(int i=1;i<n;i++){
+		    ls1[i]=ls1[i-1]+array[i-1];
+		    
+		}
+		for(int i=n-2;i>=0;i--){
+		    rs1[i]=rs1[i+1]+array[i+1];
+		}
+		for(int i=0;i<n;i++){
+		    if(ls1[i]==rs1[i]){
+		        c++;
+		        System.out.println(i);
+		        break;
+		       
+		    }
+		    
+		}
+		if(c==0){
+		    System.out.println("-1");
+		}
+		
+	}
+}
